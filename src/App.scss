@@ -67,21 +67,45 @@ a{
     
         } 
 
-        > input{
-            margin-right: 1vmax;
+        
+
+        >.search-results-out{
+            display: flex;
+            flex-direction: column;
             width: 30%;
+            position: relative;
+            > input{
+            margin-right: 1vmax;
+            width: 100%;
             outline: none;
             border:none;
             border-bottom: 1px solid white;
             height: 40px;
             color: white;
             background-color: black;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            // position: relative;
 
             &::placeholder{
                 color:white;
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
+        }
+        }
+
+        >.search-results{
+            position: absolute;
+            border-radius: 10px;
+            padding: 4px;
+            z-index: 20;
+            top: 70px;
+            right: 20px;
+            width: 700px;
+            max-height: 400px;
+            overflow-y: auto;
+            &::-webkit-scrollbar {
+                display: none;
+              }
         }
     }
 

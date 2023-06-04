@@ -17,7 +17,7 @@ const RatingCircle = ({ value }) => {
 
   return (
     <div className="circleRating">
-        karitk
+        KARTIK
     </div>
   );
 };

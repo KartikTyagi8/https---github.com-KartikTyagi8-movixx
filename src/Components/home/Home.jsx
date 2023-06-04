@@ -44,32 +44,67 @@ const Home = () => {
     fetchTopRatedMovies();
     fetchPopularMovies();
   }, [])
-  
+  const [showMore, setShowMore] = useState(false);
+  const text = upcomingMovies[0]?.overview;
   return (
     <section className="home" >
-      <div className="banner" style = {{
+      <div className="overlay-img">
+        <div className="banner" style = {{
         
-        backgroundImage: upcomingMovies[1]? `url(${`${IMAGE_BACK_DROP_BASE_URL}${upcomingMovies[1].backdrop_path}`})`: "rgb(16,16,16)",
+        backgroundImage: upcomingMovies[0]? `url(${`${IMAGE_BACK_DROP_BASE_URL}${upcomingMovies[0].backdrop_path}`})`: "rgb(16,16,16)",
 
     }}>
-
-
-      <div className="banner-details">
-        {upcomingMovies[1]&& <h2 className="banner-title">{upcomingMovies[1].title}</h2>}
-        {upcomingMovies[1]&& <h2 className="banner-overview">{upcomingMovies[1].overview}</h2>}
+        
+      </div>
+      <div className="overlay">
+        <div className="banner-details">
+        {upcomingMovies[0]&& <h2 className="banner-title">{upcomingMovies[0].title}</h2>}
+        {/* {upcomingMovies[0]&& <h2 className="banner-overview">{upcomingMovies[0].overview}</h2>} */}
+        <p className="overview">
+            {text && text.length > 250
+              ? showMore
+                ? text
+                : text.substring(0, 250)
+              : text}
+            {text && text.length > 250 && (
+              <>
+                {showMore ? (
+                  <span
+                    className="show-more"
+                    onClick={() => setShowMore(!showMore)}
+                  >
+                    ...show less
+                  </span>
+                ) : (
+                  <span
+                    className="show-more"
+                    onClick={() => setShowMore(!showMore)}
+                  >
+                    ...show more
+                  </span>
+                )}
+              </>
+            )}
+          </p>
         
         <div className="btn-both">
-          {upcomingMovies[1] && <button className="btn-watch-trailer"><BsFillPlayFill/> Play</button>}
-        {upcomingMovies[1] && <button className="btn-add-watchlist"><AiOutlinePlus/> Watchlist</button>}
+          {upcomingMovies[0] && <button className="btn-watch-trailer"><BsFillPlayFill/></button>}
+        {upcomingMovies[0] && <button className="btn-add-watchlist"><AiOutlinePlus/></button>}
         </div>
       </div>
-        
       </div>
+      
+      </div>
+      
 
-      <Row title={"Upcoming Movies"} arr={upcomingMovies} type="movie"/>
+      <div className="all_row">
+        <Row title={"Upcoming Movies"} arr={upcomingMovies} type="movie"/>
       <Row title={"Top Rated"} arr={topratedMovies} type="movie"/>
       <Row title={"Popular Movies"} arr={popularMovies} type="movie"/>
       <Row title={"Now Playing"} arr={nowplayingMovies}  type="movie"/>
+      </div>
+
+      
     </section>
   );
 };
