@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@300&display=swap');
+
+.home{
+    padding: 5px;
+    
+    > .upper-part{
+
+        margin: 0 10px;
+        display: flex;
+        justify-content: space-evenly;
+        // align-items: center;
+        >.poster{
+            padding: 10px;
+            height: 700px;
+            width: 50%;
+            background-color: black;
+            background-repeat: no-repeat;
+            background-position: center;
+
+        }
+
+        >.basic-info{
+            width: 100%;
+            padding: 10px;
+            margin-top: 30px;
+            
+            display: flex;
+            flex-direction: column;
+            >h1{
+                font-size: 2.5rem;
+                font-family: "Roboto";
+            }
+            >.genre{
+                display: flex;
+                margin: 10px 0px;
+                >.genre-name{
+                    background-color: red;
+                    margin: 0 5px;
+                    border: none;
+                    color: white;
+                    padding: 2px;
+                    border-radius: 7px;
+                    font-family: "Geologica";
+                }
+            }
+            >.tagline{
+                font-size: 1.2rem;
+                font-style: italic;
+                width: 80%;
+                color: grey;
+            }
+            h2{
+                font-size: 2rem;
+            }
+            >.overview{
+                font-size: 1.2rem;
+                width: 80%;
+            }
+            > .rating{
+            height:100px;
+            display: flex;
+            align-items: center;
+            // justify-content: center;
+            >svg{
+                font-size: 3rem;
+                cursor: pointer;
+            }
+
+            >.watch-trlr{
+                font-size: 1.5rem;
+            }
+        }
+        >.run-time{
+            display: flex;
+            margin:10px 0px;
+            >.class-p{
+                margin: 0px 5px;
+            }
+        }
+        }
+
+        
+           
+    }
+}

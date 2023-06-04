@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    border: 1px solid red;
+    color:white;
+
+    
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+// body{
+//     border: 2px solid red;
+// }
+
+.header{
+    background-color: black;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    box-sizing: border-box;
+    > img{
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .center-header{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+
+        > .options{
+            margin-left: 2vmax;
+            display: flex;
+            align-items: center;
+            // width: 100%;
+            margin-left: 4vmax;
+    
+            >a{
+                margin: 1vmax;
+                font-size: 1.3rem;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                > svg{
+                    margin-left: 0.3vmax;
+                }
+            }
+
+            >.categories{
+                margin: 1vmax;
+                font-size: 1.3rem;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+            }
+    
+        } 
+
+        > input{
+            margin-right: 1vmax;
+            width: 30%;
+            outline: none;
+            border:none;
+            border-bottom: 1px solid white;
+            height: 40px;
+            color: white;
+            background-color: black;
+            font-size: 1.1rem;
+
+            &::placeholder{
+                color:white;
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+    
+
+    
+
+    > svg {
+        color: white;
+        font-size: 1.6rem;
+        cursor: pointer;
+        &:hover{
+            color: grey;
+            
+        }
+    }
+}
+
