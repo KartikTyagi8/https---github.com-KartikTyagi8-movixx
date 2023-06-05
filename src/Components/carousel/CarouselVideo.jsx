@@ -1,82 +1,78 @@
-// import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
-// import React from 'react';
-// import ReactPlayer from 'react-player';
-// import { Carousel } from 'react-responsive-carousel';
-// import { PropTypes } from 'prop-types';
-// // import { Grid, makeStyles } from '@material-ui';
+// import React from 'react'
+// import ReactPlayer from 'react-player'
+// import './CarouselVideo.scss'
+// import {AiOutlineClose} from 'react-icons/ai'
 
-// const DUMMY_VIDEOS = [
-//   {
-//    _id: '5fd025a181e2c80897c14ae1',
-//    videoUrl: 'https://www.youtube.com/embed/AVn-Yjr7kDc'
-//   }
-// ];
-
-// const useStyles = makeStyles(theme => ({
-//   carousel: {
-//   margin: theme.spacing(2)
-//  }
-// }));
-
-// const YoutubeSlide = ({ url, isSelected }) => (
-//   <ReactPlayer width="100%" height="276px" url={url} playing={isSelected} />
-// );
-
-// const CarouselVideo = ({ data }) => {
-//   const classes = useStyles();
-
-//   const customRenderItem = (item, props) => (
-//     <item.type {...item.props} {...props} />
-//   );
-
-//   const getVideoThumb = videoId =>`https://img.youtube.com/vi/${videoId}/default.jpg`;
-
-//   const getVideoId = url =>url.substr('https://www.youtube.com/watch?v='.length, url.length);
-
-//   const customRenderThumb = children =>
-//     children.map(item => {
-//       const videoId = getVideoId(item.props.url);
-  
-//       return <img key={videoId} src={getVideoThumb(videoId)} />;
-//   });
-
+// const CarouselVideo = ({id}) => {
 //   return (
-//     // <Grid item md={6} xs={12}>
-//       <Carousel
-//        autoPlay={false}
-//        className={classes.carousel}
-//        emulateTouch={true}
-//        showArrows={true}
-//        showThumbs={true}
-//        showStatus={false}
-//        infiniteLoop={true}
-//        renderItem={customRenderItem}
-//        renderThumbs={customRenderThumb}
-//      >
-//       {data.map(v => (
-//         <YoutubeSlide
-//           url={v.videoUrl}
-//           muted
-//           playing={false}
-//           key={v._id ? v._id : v.id}
-//         />
-//       ))}
-//      </Carousel>
-//   //  </Grid>
-//   );
-//  };
+//     <div className="video-player">
+//         <ReactPlayer url='https://www.youtube.com/watch?v=A3GBDEE3zxY' className='video' controls>
+        
+//         </ReactPlayer>
+//         <AiOutlineClose />
+//     </div>
+    
+//   )
+// }
 
-//  YoutubeSlide.propTypes = {
-//    url: PropTypes.string,
-//    isSelected: PropTypes.bool
-//  };
+// export default CarouselVideo
+import React, { useState } from "react";
+import { BsChevronLeft, BsChevronRight, BsX } from "react-icons/bs";
+import ReactPlayer from "react-player";
+import "./CarouselVideo.scss";
 
-//  CarouselVideo.propTypes = {
-//    data: PropTypes.array
-//  };
+const CarouselVideo = ({ videos, closeCarousel }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+//   const [activePlayback,setActivePlayback] = useState(0);
+  
 
-//  CarouselVideo.defaultProps = {
-//   data: DUMMY_VIDEOS
-//  };
+  const handlePrev = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === 0 ? videos.length - 1 : prevIndex - 1
+    );
+  };
 
-// export default CarouselVideo;
+  const handleNext = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === videos.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const closeAndSetCarousel = () => {
+    setActiveIndex(0);
+    closeCarousel();
+  };
+  const youtubePlayerOptions = {
+    playerVars: {
+      controls: 1, // Enable YouTube controls
+    },
+  };
+
+  return (
+    <div className="carousel">
+        <BsX className="close-icon" onClick={closeAndSetCarousel} />
+      <div className="carousel-content">
+        <BsChevronLeft className="carousel-control prev" onClick={handlePrev} />
+        <BsChevronRight className="carousel-control next" onClick={handleNext} />
+        
+        {videos.map((video, index) => (
+          <div
+            key={index}
+            className={`carousel-item ${index === activeIndex ? "active" : ""}`}
+          >
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${video.key}`}
+              controls ={true}
+              height="100%"
+              width="100%"
+              playing={index === activeIndex}
+              config={youtubePlayerOptions}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default CarouselVideo;

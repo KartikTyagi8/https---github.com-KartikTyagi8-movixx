@@ -1,7 +1,7 @@
 import React from 'react'
 import MovieSearch from '../movieSearch/MovieSearch'
 
-const SearchResults = ({search,setSearchQuery,setSearchResults, searchQuery}) => {
+const SearchResults = ({search,setSearchQuery,setSearchResults}) => {
   const clearSearch = () => {
     setSearchQuery("");
     setSearchResults([]);

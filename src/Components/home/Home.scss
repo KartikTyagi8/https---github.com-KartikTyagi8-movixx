@@ -14,10 +14,18 @@
     right:0;
     width: 50%;
     height: 720px;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%,rgba(0, 0, 0, 0.4) 5%, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 1.1) 40%, rgba(0, 0, 0, 0.9) 100%),
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.1) 1%,
+      rgba(0, 0, 0, 0.2) 3%,
+      rgba(0, 0, 0, 0.3) 5%,
+      rgba(0, 0, 0, 0.8) 30%,
+      rgba(0, 0, 0, 1.1) 40%,
+      rgba(0, 0, 0, 0.9) 100%
+    ),
               radial-gradient(circle at top left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
   background-blend-mode: normal, screen;
-    // border: none;
+    border: none;
     >.banner-details{
       margin-left: 30px;
       width: 70%;

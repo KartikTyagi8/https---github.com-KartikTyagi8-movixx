@@ -74,6 +74,7 @@ const Header = () => {
         {searchClick && <div className="search-results-out">
           <input
           type="text"
+          value={searchQuery}
           placeholder="Search for the movies and TV shows..."
           onChange={(e)=>setSearchQuery(e.target.value)}
         />

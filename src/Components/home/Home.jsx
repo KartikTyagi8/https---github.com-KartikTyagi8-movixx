@@ -98,7 +98,7 @@ const Home = () => {
       
 
       <div className="all_row">
-        <Row title={"Upcoming Movies"} arr={upcomingMovies} type="movie"/>
+      <Row title={"Upcoming Movies"} arr={upcomingMovies} type="movie"/>
       <Row title={"Top Rated"} arr={topratedMovies} type="movie"/>
       <Row title={"Popular Movies"} arr={popularMovies} type="movie"/>
       <Row title={"Now Playing"} arr={nowplayingMovies}  type="movie"/>

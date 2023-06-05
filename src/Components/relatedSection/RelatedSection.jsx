@@ -8,7 +8,7 @@ const RelatedSection = ({ type, recommend }) => {
       <h2>Recommended Shows</h2>
       <div> 
         {recommend?.map((item,index) => (
-          <Cards key = {index} img={`${IMAGE_BASE_URL}${item.poster_path}`} id = {item.id} type = {type} />
+          <Cards key = {index} img={`${IMAGE_BASE_URL}${item.poster_path}`} id = {item.id} type = {type} new_page = {true} />
         ))}
       </div>
     </div>

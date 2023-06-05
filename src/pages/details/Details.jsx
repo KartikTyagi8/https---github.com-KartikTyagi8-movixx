@@ -4,25 +4,27 @@ import Cast from "../../Components/cast/Cast.jsx";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import ReactPlayer from "react-player";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+// import { Carousel } from "react-responsive-carousel";
 import "./Details.scss";
 import axios from "axios";
 import RelatedSection from "../../Components/relatedSection/RelatedSection";
 import CarouselVideo from "../../Components/carousel/CarouselVideo.jsx";
 import RatingCircle from "../../Components/ratingCircle/RatingCircle.jsx";
-// import DetailSection from '../../Components/detailSection/DetailSection';
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
-// const IMAGE_BACK_DROP_BASE_URL = "https://image.tmdb.org/t/p/w1280";
 const API_KEY = "7a5563d316ae420e2224814b807a96d5";
 const BASE_URL = "https://api.themoviedb.org/3";
 const Details = ({ type }) => {
-  const playVideos = () => {
-    console.log("kartik");
-    return <CarouselVideo />;
-  };
+  
 
   //Params
   const { id } = useParams();
+
+  // const playVideos = () => {
+  //   console.log("kartik");
+  //   return (<CarouselVideo id={id}/>)
+  // };
+
+  const [videoSetup,setVideoSetup] = useState(false);
 
   // Recommended
   const [recommend, setRecommend] = useState([]);
@@ -77,7 +79,7 @@ const Details = ({ type }) => {
       const {
         data: { results },
       } = await axios.get(
-        `${BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}`
+        `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}`
       );
       setVideos(results);
     };
@@ -85,15 +87,21 @@ const Details = ({ type }) => {
   }, []);
 
   const filtereddVideos = videos.filter((item) => item.type === "Trailer");
-  console.log(filtereddVideos);
+  console.log(filtereddVideos); //Movies with official trailer
   //Getting videos
 
   const [showMore, setShowMore] = useState(false);
   const text = details.overview;
 
+  // const size = videos.size;
+  const closeCarousel = () => {
+    setVideoSetup(false);
+  };
+
   return (
     <section className="home">
       <div className="upper-part">
+        {videoSetup && <CarouselVideo videos={filtereddVideos} closeCarousel={closeCarousel}/>}
         <div
           className="poster"
           style={{
@@ -114,12 +122,16 @@ const Details = ({ type }) => {
           <div className="rating">
             {/* <div className="rating-circle">{details.vote_average}</div> */}
             <RatingCircle value={details.vote_average} />
-            <AiOutlinePlayCircle
-              onClick={() => {
-                playVideos();
-              }}
-            />
-            <h2 className="watch-trlr">Watch Trailer</h2>
+            {type === "movie" && (
+              <>
+                <AiOutlinePlayCircle
+                  onClick={() => {
+                    setVideoSetup(true);
+                  }}
+                />
+                <h2 className="watch-trlr">Watch Trailer</h2>
+              </>
+            )}
           </div>
           <h2>Overview</h2>
           <p className="overview">
