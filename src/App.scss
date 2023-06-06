@@ -29,7 +29,8 @@ a{
     padding: 1rem;
     box-sizing: border-box;
     > img{
-        height: 100%;
+        width: 60px;
+        height: auto;
         cursor: pointer;
     }
 
@@ -40,7 +41,7 @@ a{
         justify-content: space-between;
 
         > .options{
-            margin-left: 2vmax;
+            margin-left: 1vmax;
             display: flex;
             align-items: center;
             // width: 100%;

@@ -70,6 +70,7 @@ const Header = () => {
             Categories <IoIosArrowDropdown />
             {isDropdownOpen && <Dropdown />}
           </div>
+          <Link to="/watchlist"> WatchList </Link>
         </div>
         {searchClick && <div className="search-results-out">
           <input

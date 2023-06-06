@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Cast from "../../Components/cast/Cast.jsx";
-import { AiOutlinePlayCircle } from "react-icons/ai";
+// import { AiOutlinePlayCircle } from "react-icons/ai";
+import {BsFillPlayFill} from 'react-icons/bs'
 // import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from "react-responsive-carousel";
+import {AiOutlinePlus} from 'react-icons/ai'
+
 import "./Details.scss";
 import axios from "axios";
 import RelatedSection from "../../Components/relatedSection/RelatedSection";
@@ -128,16 +131,24 @@ const Details = ({ type }) => {
           </div>
           <div className="rating">
             <RatingCircle rating={vote} />
-            {type === "movie" && (
+            <div className="rating-overall">
+              {type === "movie" && (
               <div className="movie-trailer-watch">
-                <AiOutlinePlayCircle
+                <BsFillPlayFill
                   onClick={() => {
                     setVideoSetup(true);
                   }}
                 />
-                <h2 className="watch-trlr">Watch Trailer</h2>
+                
               </div>
+
             )}
+            <div className="btn-add-watchlist">
+                <AiOutlinePlus />
+            </div>
+            </div>
+            
+
           </div>
           <h2>Overview</h2>
           <p className="overview">
@@ -184,6 +195,7 @@ const Details = ({ type }) => {
               </p>
             )}
           </div>
+          
         </div>
       </div>
       <Cast cast={castName} type={type} />

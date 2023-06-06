@@ -120,7 +120,7 @@
   background-blend-mode: normal, screen;
     border: none;
     >.banner-details{
-      margin-left: 30px;
+      margin:0 40px;
       width: 70%;
       z-index: 10;
       position: absolute;
@@ -131,7 +131,6 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
       color: #ffffff;
       z-index: 2; 
       >.banner-title{
@@ -152,8 +151,10 @@
       >.btn-both{
   
           display: flex;
-          margin:40px;
-          width: 270px;
+          margin-top:40px;
+          margin-left: 10px;
+          left: 0;
+          width: 150px;
           justify-content: space-between;
           
           >.btn-watch-trailer{

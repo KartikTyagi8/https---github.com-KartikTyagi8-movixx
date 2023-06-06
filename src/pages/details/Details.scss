@@ -26,6 +26,7 @@
             
             display: flex;
             flex-direction: column;
+            
             >h1{
                 font-size: 2.5rem;
                 font-family: "Roboto";
@@ -60,24 +61,53 @@
                   }
             }
             > .rating{
-            height:100px;
+            height:200px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            justify-content: space-evenly;
+
             // justify-content: center;
-            
-            >.movie-trailer-watch{
-                margin-left: 10px;
+            >.rating-overall{
                 display: flex;
-                align-items: center;
-                >svg{
+                width: 140px;
+                justify-content: space-between;
+                >.movie-trailer-watch{
+                    background-color: white;
+                    display: flex;
                     
-                font-size: 3rem;
-                cursor: pointer;
+                    align-items: center;
+                    justify-content: center;
+                    border: none;
+                    justify-content: center;
+                    height: 60px;
+                    width: 60px;
+                    cursor: pointer;
+                    border-radius: 50%;
+                    > svg{
+                      fill: rgba(212, 13, 13, 0.866);
+                      font-size: 40px;
+                    }
+                }
+
+                >.btn-add-watchlist{
+                    background-color: white;
+                    display: flex;
+                    align-items: center;
+                    border: none;
+                    justify-content: center;
+                    height: 60px;
+                    width: 60px;
+                    cursor: pointer;
+                    border-radius: 50%;
+                    > svg{
+                      fill: black;
+                      font-size: 40px;
+                    }
+                }
+
             }
-                >.watch-trlr{
-                font-size: 1.5rem;
-            }
-            }
+            
+            
 
             
         }
