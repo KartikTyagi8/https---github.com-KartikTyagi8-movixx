@@ -6,11 +6,16 @@ const BASE_URL = "https://api.themoviedb.org/3";
 const TvShows = () => {
   const [tv,setTv] = useState([]);
     useEffect(() => {
+      try {
         const getAllTv = async () => {
           const {data:{results}} = await axios.get( `${BASE_URL}/discover/tv?api_key=${API_KEY}`);
           setTv(results);
         };
         getAllTv();
+      } catch (error) {
+        console.log(error)
+      }
+        
 
       },[])
   return (

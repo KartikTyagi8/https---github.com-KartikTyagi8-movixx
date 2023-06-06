@@ -4,13 +4,106 @@
 .home{
   display: flex;
   flex-direction: column;
-  >.overlay-img{
+  >.video-setup{
+  position: relative;
   width: 100%;
   height: 700px;
-  
-  >.overlay {
+  z-index:12;
+  >.carousel {
     position: absolute;
-    top: 75px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    >.close-icon {
+        position: absolute;
+        top: 10px; /* Adjust the top position */
+        right: 10px; 
+        fill: red;
+        font-size: 4rem;
+        color: #fff;
+        cursor: pointer;
+        z-index: 12;
+        >svg{
+          fill: red;
+        }
+      }
+      >.carousel-content {
+        position: relative;
+        min-width: 100%;
+        height: 100%;
+        z-index: 11;
+        // width: auto;
+        // height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        >.carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 9999;
+            transition: opacity 0.3s ease-in-out;
+           
+          }
+          >.carousel-item.active {
+            opacity: 1;
+          }
+          
+          
+          >.carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10;
+            
+          }
+          >.carousel-control.prev {
+            left: 10px;
+          }
+          
+          >.carousel-control.next {
+            right: 10px;
+          }
+          
+         
+      }
+  }
+  
+  
+  
+  
+  
+  
+  
+  >.img-carousel-setup{
+    position: relative;
+    height: 100%;
+    >.banner{
+      padding: 10px;
+      
+      height: 100%;
+      width: 80%;
+      
+      background-color: black;
+      background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+   }
+   >.overlay {
+    position: absolute;
+    top: 0;
     right:0;
     width: 50%;
     height: 720px;
@@ -99,27 +192,10 @@
       
     }
   }
-  >.banner{
-    padding: 10px;
-    
-    height: 700px;
-    width: 80%;
-    
-    background-color: black;
-    background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  // display: inline-block;
-  // flex-direction: column;
-  // align-items: flex-end;
-    
+  }
   
-
   
-
   
- }
 }
 
 }

@@ -1,21 +1,3 @@
-// import React from 'react'
-// import ReactPlayer from 'react-player'
-// import './CarouselVideo.scss'
-// import {AiOutlineClose} from 'react-icons/ai'
-
-// const CarouselVideo = ({id}) => {
-//   return (
-//     <div className="video-player">
-//         <ReactPlayer url='https://www.youtube.com/watch?v=A3GBDEE3zxY' className='video' controls>
-        
-//         </ReactPlayer>
-//         <AiOutlineClose />
-//     </div>
-    
-//   )
-// }
-
-// export default CarouselVideo
 import React, { useState } from "react";
 import { BsChevronLeft, BsChevronRight, BsX } from "react-icons/bs";
 import ReactPlayer from "react-player";

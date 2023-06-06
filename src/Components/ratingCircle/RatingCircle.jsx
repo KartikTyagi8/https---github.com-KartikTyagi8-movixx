@@ -1,25 +1,23 @@
-import React from 'react';
-import './RatingCircle.scss';
+import React from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
-const RatingCircle = ({ value }) => {
-  const circleStyles = {
-    pathColor: value < 5 ? "red" : value < 7 ? "orange" : "green",
-    trailColor: "transparent",
-    strokeLinecap: "round",
-  };
+import "./RatingCircle.scss";
 
-  const textStyles = {
-    fontSize: "100px",
-    fontWeight: "700",
-    fill: "black",
-  };
-
-  return (
-    <div className="circleRating">
-        KARTIK
-    </div>
-  );
+const CircleRating = ({ rating }) => {
+    return (
+        <div className="circleRating">
+            <CircularProgressbar
+                value={rating}
+                maxValue={10}
+                text={rating}
+                styles={buildStyles({
+                    pathColor:
+                        rating < 5 ? "red" : rating < 7 ? "orange" : "green",
+                })}
+            />
+        </div>
+    );
 };
 
-export default RatingCircle;
+export default CircleRating;

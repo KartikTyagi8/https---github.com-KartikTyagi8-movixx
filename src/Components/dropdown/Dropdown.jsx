@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Dropdown.scss";
 import axios from "axios";
-import Genre from "../../pages/genre/Genre";
 const API_KEY = "7a5563d316ae420e2224814b807a96d5";
 const BASE_URL = "https://api.themoviedb.org/3";
 

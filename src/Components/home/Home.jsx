@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect ,useState } from "react";
 import "./Home.scss";
 // import logo from "../../assets/movix-logo.png";
 import axios from 'axios'; 
@@ -6,6 +6,7 @@ import axios from 'axios';
 import {BsFillPlayFill} from 'react-icons/bs'
 import {AiOutlinePlus} from 'react-icons/ai'
 import Row from "../row/Row";
+import CarouselBanner from "../carouselBanner/CarouselBanner";
 
 const API_KEY = "7a5563d316ae420e2224814b807a96d5";
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -13,7 +14,6 @@ const UPCOMING = "upcoming";
 const TOP_RATED = "top_rated";
 const POPULAR = "popular";
 const NOW_PLAYING = "now_playing";
-// const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 const IMAGE_BACK_DROP_BASE_URL = "https://image.tmdb.org/t/p/w1280";
 
 const Home = () => {
@@ -21,6 +21,12 @@ const Home = () => {
   const [topratedMovies,setTopratedMovies] = useState([]);
   const [popularMovies,setPopularMovies] = useState([]);
   const [nowplayingMovies,setNowplayingMovies] = useState([]);
+  const [videoBannerSetup,setVideoBannerSetup] = useState(false);
+  const [videos,setVideos] = useState([]);
+  const [random,setRandom] = useState(0);
+  const [showMore, setShowMore] = useState(false);
+  
+  
 
   useEffect(() => {
     const fetchUpcomingMovies = async () => {
@@ -39,26 +45,56 @@ const Home = () => {
       const {data:{results}} = await axios.get( `${BASE_URL}/movie/${NOW_PLAYING}?api_key=${API_KEY}`);
       setNowplayingMovies(results)
     };
+    
+    
     fetchUpcomingMovies();
     fetchNowPlayingMovies();
     fetchTopRatedMovies();
     fetchPopularMovies();
+
   }, [])
-  const [showMore, setShowMore] = useState(false);
-  const text = upcomingMovies[0]?.overview;
-  return (
+  useEffect(() => {
+  const getBannerVideo = async () => {
+    try {
+      const {
+      data: { results },
+    } = await axios.get(
+      `${BASE_URL}/movie/${upcomingMovies[random]?.id}/videos?api_key=${API_KEY}`
+    );
+    setVideos(results)
+    setRandom(Math.floor(Math.random() * 20))
+    } catch (error) {
+      console.log(error)
+    }
+    
+    
+  };
+  getBannerVideo();
+}, [upcomingMovies,random])
+
+  
+  const text = upcomingMovies[random]?.overview;
+
+  const closeCarousel = () => {
+    setVideoBannerSetup(false);
+  }
+
+  const filtereddVideos = videos.filter((item) => item.type === "Trailer");
+  console.log(filtereddVideos);
+  
+    return (
     <section className="home" >
-      <div className="overlay-img">
+      <div className="video-setup">
+        {videoBannerSetup && <CarouselBanner videos={filtereddVideos} closeCarousel = {closeCarousel}/>}
+      <div className="img-carousel-setup">
         <div className="banner" style = {{
         
-        backgroundImage: upcomingMovies[0]? `url(${`${IMAGE_BACK_DROP_BASE_URL}${upcomingMovies[0].backdrop_path}`})`: "rgb(16,16,16)",
+        backgroundImage: upcomingMovies[random]? `url(${`${IMAGE_BACK_DROP_BASE_URL}${upcomingMovies[random]?.backdrop_path}`})`: "rgb(16,16,16)",
 
-    }}>
-        
-      </div>
+    }}></div>
       <div className="overlay">
         <div className="banner-details">
-        {upcomingMovies[0]&& <h2 className="banner-title">{upcomingMovies[0].title}</h2>}
+        {upcomingMovies[random]&& <h2 className="banner-title">{upcomingMovies[random]?.title}</h2>}
         {/* {upcomingMovies[0]&& <h2 className="banner-overview">{upcomingMovies[0].overview}</h2>} */}
         <p className="overview">
             {text && text.length > 250
@@ -88,11 +124,14 @@ const Home = () => {
           </p>
         
         <div className="btn-both">
-          {upcomingMovies[0] && <button className="btn-watch-trailer"><BsFillPlayFill/></button>}
+          {upcomingMovies[0] && <button className="btn-watch-trailer" onClick={()=>setVideoBannerSetup(true)}><BsFillPlayFill/></button>}
         {upcomingMovies[0] && <button className="btn-add-watchlist"><AiOutlinePlus/></button>}
         </div>
       </div>
       </div>
+      </div>
+      
+        
       
       </div>
       

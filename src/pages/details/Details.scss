@@ -64,14 +64,22 @@
             display: flex;
             align-items: center;
             // justify-content: center;
-            >svg{
+            
+            >.movie-trailer-watch{
+                margin-left: 10px;
+                display: flex;
+                align-items: center;
+                >svg{
+                    
                 font-size: 3rem;
                 cursor: pointer;
             }
-
-            >.watch-trlr{
+                >.watch-trlr{
                 font-size: 1.5rem;
             }
+            }
+
+            
         }
         >.run-time{
             display: flex;

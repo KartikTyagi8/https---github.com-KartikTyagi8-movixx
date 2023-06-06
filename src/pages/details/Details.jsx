@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Cast from "../../Components/cast/Cast.jsx";
 import { AiOutlinePlayCircle } from "react-icons/ai";
-import ReactPlayer from "react-player";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from "react-responsive-carousel";
 import "./Details.scss";
 import axios from "axios";
@@ -75,23 +74,31 @@ const Details = ({ type }) => {
   //Getting videos
   const [videos, setVideos] = useState([]);
   useEffect(() => {
+    
     const getVideos = async () => {
-      const {
+      try {
+        const {
         data: { results },
       } = await axios.get(
         `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}`
       );
       setVideos(results);
+      } catch (error) {
+        console.log(error);
+      }
+      
     };
     getVideos();
   }, []);
 
   const filtereddVideos = videos.filter((item) => item.type === "Trailer");
-  console.log(filtereddVideos); //Movies with official trailer
+  // console.log(filtereddVideos); //Movies with official trailer
   //Getting videos
 
   const [showMore, setShowMore] = useState(false);
-  const text = details.overview;
+  const text = details?.overview;
+  const vote = details && details.vote_average ? details.vote_average.toFixed(1) : null;
+
 
   // const size = videos.size;
   const closeCarousel = () => {
@@ -120,17 +127,16 @@ const Details = ({ type }) => {
             })}
           </div>
           <div className="rating">
-            {/* <div className="rating-circle">{details.vote_average}</div> */}
-            <RatingCircle value={details.vote_average} />
+            <RatingCircle rating={vote} />
             {type === "movie" && (
-              <>
+              <div className="movie-trailer-watch">
                 <AiOutlinePlayCircle
                   onClick={() => {
                     setVideoSetup(true);
                   }}
                 />
                 <h2 className="watch-trlr">Watch Trailer</h2>
-              </>
+              </div>
             )}
           </div>
           <h2>Overview</h2>
