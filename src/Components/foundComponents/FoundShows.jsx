@@ -5,10 +5,6 @@ const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 
 const FoundShows = ({ title , type, mediaType}) => {
-  // if (!Array.isArray(mediaType)) {
-  //   return null; // or handle the case when mediaType is not an array
-  // }
-  console.log(title);
 
   return (
     <div className='container'>

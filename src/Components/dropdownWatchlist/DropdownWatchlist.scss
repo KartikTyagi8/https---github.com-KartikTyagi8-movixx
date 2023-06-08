@@ -1,0 +1,23 @@
+.dropdown-content {
+    z-index: 13;
+    position: absolute;
+    top:50px;
+    background-color: black;
+    border: 1px solid #ccc;
+    display: flex;
+    max-height: 400px;
+    min-width: 200px;
+    flex-direction: column;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    >a{
+        background-color: rgb(161, 161, 207);
+        border: 1px solid black;
+        text-align: center;
+        padding: 10px;
+        color: black;
+    }
+  }

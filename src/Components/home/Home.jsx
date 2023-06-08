@@ -80,7 +80,6 @@ const Home = () => {
   }
 
   const filtereddVideos = videos.filter((item) => item.type === "Trailer");
-  console.log(filtereddVideos);
   
     return (
     <section className="home" >

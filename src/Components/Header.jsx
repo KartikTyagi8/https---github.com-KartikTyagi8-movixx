@@ -1,35 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../App.scss";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Dropdown from "./dropdown/Dropdown.jsx";
 import { ImSearch } from "react-icons/im";
+import DropdownWatchlist from "./dropdownWatchlist/DropdownWatchlist";
 import SearchResults from "./searchResults/SearchResults";
 import { IoIosArrowDropdown } from "react-icons/io";
 import logo from "../assets/movix-logo.png";
+import { SERVER } from "../index.js";
+import { Context } from "..";
+import { toast } from "react-hot-toast";
 const API_KEY = "7a5563d316ae420e2224814b807a96d5";
 const BASE_URL = "https://api.themoviedb.org/3";
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isWatchlistDropdownOpen, setIsWatchlistDropdownOpen] = useState(false);
+  const {isAuthenticated,setIsAuthenticated} = useContext(Context);
+
+  const logoutHandler = async () => {
+    try {
+      await axios.get(`${SERVER}/users/logout`,{
+        withCredentials:true,
+      });
+  toast.success("Logout Successfully");
+  setIsAuthenticated(false);
+  localStorage.removeItem("authToken");
+
+  navigate("/");
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+
+  }
   // const textColor = isDropdownOpen ? 'grey' : 'black';
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+  const handleWatchlistDropdownToggle = () => {
+    setIsWatchlistDropdownOpen(!isWatchlistDropdownOpen);
+  };
 
   const navigate = useNavigate();
 
   const clickLogo = () => {
-    navigate("/"); // Replace '/' with the path of your home page
+    navigate("/home"); // Replace '/' with the path of your home page
   };
-  const [searchQuery, setSearchQuery] = useState("");  //searched query
-  const [searchResults, setSearchResults] = useState([]); 
-  const [searchClick,setSearchClick] = useState(false);//searched query results
+  const [searchQuery, setSearchQuery] = useState(""); //searched query
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchClick, setSearchClick] = useState(false); //searched query results
   const handleSearchClick = () => {
     setSearchClick(!searchClick);
-  }
-
+  };
 
   useEffect(() => {
     const searchMovies = async () => {
@@ -40,7 +64,6 @@ const Header = () => {
           `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}`
         );
         setSearchResults(results);
-        console.log(results);
       } else {
         setSearchResults([]);
       }
@@ -49,10 +72,6 @@ const Header = () => {
     searchMovies();
   }, [searchQuery]);
 
-  console.log(searchQuery);
-  
-
-  
 
   return (
     <nav className="header">
@@ -66,26 +85,40 @@ const Header = () => {
             onMouseEnter={handleDropdownToggle}
             onMouseLeave={handleDropdownToggle}
           >
-            {/* {" "} */}
             Categories <IoIosArrowDropdown />
             {isDropdownOpen && <Dropdown />}
           </div>
-          <Link to="/watchlist"> WatchList </Link>
+          <div
+            className="watchlist"
+            onMouseEnter={handleWatchlistDropdownToggle}
+            onMouseLeave={handleWatchlistDropdownToggle}
+          >
+            Watchlist <IoIosArrowDropdown />
+            {isWatchlistDropdownOpen && <DropdownWatchlist />}
+          </div>
+          {/* <Link to="/watchlist"> WatchList </Link> */}
         </div>
-        {searchClick && <div className="search-results-out">
-          <input
-          type="text"
-          value={searchQuery}
-          placeholder="Search for the movies and TV shows..."
-          onChange={(e)=>setSearchQuery(e.target.value)}
-        />
-        
-        </div>}
-        {searchQuery?.length > 0 && <SearchResults search={searchResults} setSearchQuery={setSearchQuery} setSearchResults={setSearchResults}/>}
-        
+        {searchClick && (
+          <div className="search-results-out">
+            <input
+              type="text"
+              value={searchQuery}
+              placeholder="Search for the movies and TV shows..."
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+        )}
+        {searchQuery?.length > 0 && (
+          <SearchResults
+            search={searchResults}
+            setSearchQuery={setSearchQuery}
+            setSearchResults={setSearchResults}
+          />
+        )}
       </div>
 
-      <ImSearch onClick={handleSearchClick}/>
+      <ImSearch onClick={handleSearchClick} />
+      <button className="logout" onClick={logoutHandler}>Logout</button>
     </nav>
   );
 };

@@ -6,10 +6,6 @@ const API_KEY = "7a5563d316ae420e2224814b807a96d5";
 const BASE_URL = "https://api.themoviedb.org/3";
 
 const Dropdown = () => {
-  // const handleGenreClick = ({title,id}) => {
-  //   console.log(title);
-  //   return <Genre title={title} id={id}/>;
-  // };
 
   const [genre, setGenre] = useState([]);
 
@@ -22,8 +18,6 @@ const Dropdown = () => {
     };
     getAllGenre();
   }, []);
-
-  // const top5Genres = genre.slice(0, 5);
 
   return (
     <div className="dropdown-content">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Cast from "../../Components/cast/Cast.jsx";
 // import { AiOutlinePlayCircle } from "react-icons/ai";
-import {BsFillPlayFill} from 'react-icons/bs'
+import {BsFillPlayFill,BsCheck2} from 'react-icons/bs'
 // import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from "react-responsive-carousel";
 import {AiOutlinePlus} from 'react-icons/ai'
@@ -12,6 +12,7 @@ import axios from "axios";
 import RelatedSection from "../../Components/relatedSection/RelatedSection";
 import CarouselVideo from "../../Components/carousel/CarouselVideo.jsx";
 import RatingCircle from "../../Components/ratingCircle/RatingCircle.jsx";
+import { SERVER } from "../../index.js";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 const API_KEY = "7a5563d316ae420e2224814b807a96d5";
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -21,10 +22,6 @@ const Details = ({ type }) => {
   //Params
   const { id } = useParams();
 
-  // const playVideos = () => {
-  //   console.log("kartik");
-  //   return (<CarouselVideo id={id}/>)
-  // };
 
   const [videoSetup,setVideoSetup] = useState(false);
 
@@ -94,15 +91,51 @@ const Details = ({ type }) => {
     getVideos();
   }, []);
 
+
+  const [movieClicked,isMovieClicked] = useState(false);
+  useEffect(() => {
+    
+    if(!movieClicked){
+      const postMovie = async () => {
+      try {
+        const {
+        data
+      } = await axios.get(
+        `${SERVER}/watchlist/new`,
+        {
+          type:type,
+          item_id: id,
+        }
+      );
+      isMovieClicked(true);
+      } catch (error) {
+        console.log(error);
+      }
+      
+    };
+    postMovie();
+  }
+  else{
+    
+  }
+  }, [movieClicked]);
+
+
   const filtereddVideos = videos.filter((item) => item.type === "Trailer");
-  // console.log(filtereddVideos); //Movies with official trailer
-  //Getting videos
 
   const [showMore, setShowMore] = useState(false);
   const text = details?.overview;
   const vote = details && details.vote_average ? details.vote_average.toFixed(1) : null;
 
-
+  // if(movieClicked){
+  //   const item = await axios.post(`${SERVER}/watchlist/new`,{
+  //     type:type,
+  //     item_id: id,
+  //   })
+  // }
+  // else{
+  //   const item
+  // }
   // const size = videos.size;
   const closeCarousel = () => {
     setVideoSetup(false);
@@ -144,7 +177,8 @@ const Details = ({ type }) => {
 
             )}
             <div className="btn-add-watchlist">
-                <AiOutlinePlus />
+                {!movieClicked && <AiOutlinePlus onClick={()=>isMovieClicked(true)}/>}
+                {movieClicked && <BsCheck2 onClick={()=>isMovieClicked(false)}/>}
             </div>
             </div>
             
