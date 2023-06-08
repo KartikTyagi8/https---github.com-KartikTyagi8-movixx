@@ -2,7 +2,9 @@ import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 import FoundShows from '../../Components/foundComponents/FoundShows';
 import { useParams } from 'react-router-dom';
-// const SERVER = "kartik"
+import { SERVER } from '../..';
+import { toast } from 'react-hot-toast';
+import FoundWatchlistShows from '../../Components/foundWatchlistShows/FoundWatchlistShows';
 const API_KEY = "7a5563d316ae420e2224814b807a96d5";
 const BASE_URL = "https://api.themoviedb.org/3";
 
@@ -11,22 +13,24 @@ const Watchlist = () => {
     console.log(type);
     const [watchlist,setWatchlist] = useState([]);
     useEffect(() => {
-      try {
-        const getAllWatchList = async () => {
-          const {data:{results}} = await axios.get(`${BASE_URL}/discover/${type}?api_key=${API_KEY}`);
-          setWatchlist(results);
-        };
-        getAllWatchList();
-      } catch (error) {
-        console.log(error)
-      }
-        
+      axios.get(`${SERVER}/watchlist/my`, {
+        withCredentials: true,
+      })
+        .then((res) => {
+          setWatchlist(res.data.list);
+          // console.log(res.data.list);
+        })
+        .catch((error) => {
+          toast.error(error.response.data.message);
+        });
+    }, []);
 
-      },[type])
+    const filteredWatchlist = watchlist.filter((item) => item.type === type);
+    console.log(filteredWatchlist)
+    
   return (
     <div className='tvshows-container'>
-        <FoundShows mediaType={watchlist} type={type}/>
-
+        {filteredWatchlist ? <FoundWatchlistShows mediaType={filteredWatchlist} type={type}/> : "No Shows added to WatchList"}
     </div>
   )
 }

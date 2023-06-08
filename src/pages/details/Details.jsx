@@ -13,6 +13,7 @@ import RelatedSection from "../../Components/relatedSection/RelatedSection";
 import CarouselVideo from "../../Components/carousel/CarouselVideo.jsx";
 import RatingCircle from "../../Components/ratingCircle/RatingCircle.jsx";
 import { SERVER } from "../../index.js";
+import { toast } from "react-hot-toast";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 const API_KEY = "7a5563d316ae420e2224814b807a96d5";
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -91,34 +92,30 @@ const Details = ({ type }) => {
     getVideos();
   }, []);
 
+  
 
-  const [movieClicked,isMovieClicked] = useState(false);
-  useEffect(() => {
-    
-    if(!movieClicked){
-      const postMovie = async () => {
-      try {
-        const {
-        data
-      } = await axios.get(
-        `${SERVER}/watchlist/new`,
-        {
-          type:type,
-          item_id: id,
-        }
-      );
-      isMovieClicked(true);
-      } catch (error) {
-        console.log(error);
+
+  const [movieClicked,setMovieClicked] = useState(false);
+
+  const watchlistHandler = async () =>{
+    try {
+      const {data} = await axios.post(`${SERVER}/watchlist/new`,{
+          type:type, item_id:id,poster_path:details.poster_path,
+      },{
+          headers:{
+              "Content-Type": "application/json",
+          },
+          withCredentials:true,
       }
-      
-    };
-    postMovie();
+      );
+      setMovieClicked(true);
+      toast.success(data.message);
+  } catch (error) {
+      toast.error(error.response.data.message);
+      console.log(error);
   }
-  else{
-    
-  }
-  }, [movieClicked]);
+  };
+  
 
 
   const filtereddVideos = videos.filter((item) => item.type === "Trailer");
@@ -177,8 +174,8 @@ const Details = ({ type }) => {
 
             )}
             <div className="btn-add-watchlist">
-                {!movieClicked && <AiOutlinePlus onClick={()=>isMovieClicked(true)}/>}
-                {movieClicked && <BsCheck2 onClick={()=>isMovieClicked(false)}/>}
+                <AiOutlinePlus onClick={watchlistHandler}/>
+                {/* <BsCheck2 onClick={watchlistHandler}/> */}
             </div>
             </div>
             

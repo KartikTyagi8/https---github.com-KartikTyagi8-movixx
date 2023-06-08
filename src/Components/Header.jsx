@@ -24,15 +24,14 @@ const Header = () => {
       await axios.get(`${SERVER}/users/logout`,{
         withCredentials:true,
       });
-  toast.success("Logout Successfully");
-  setIsAuthenticated(false);
-  localStorage.removeItem("authToken");
+    toast.success("Logout Successfully");
+    setIsAuthenticated(false);
+    localStorage.removeItem("authToken");
 
-  navigate("/");
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
-
+    navigate("/");
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
   }
   // const textColor = isDropdownOpen ? 'grey' : 'black';
 
