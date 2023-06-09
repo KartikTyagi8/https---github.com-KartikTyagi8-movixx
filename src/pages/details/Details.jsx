@@ -210,7 +210,6 @@ const Details = ({ type }) => {
               )}
               <div
                 className="btn-add-watchlist"
-                
               >
                 {inWatchlist ? <BsCheck2 onClick={removeItem}/> : <AiOutlinePlus onClick={watchlistHandler}/>}
               </div>

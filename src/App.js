@@ -16,7 +16,7 @@ import Genre from "./pages/genre/Genre.jsx";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register.jsx";
 import { Toaster } from "react-hot-toast";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context, SERVER } from "./index.js";
 
 function App() {
@@ -43,6 +43,13 @@ function App() {
       });
   }, []);
 
+  const [random,setRandom] = useState(0);
+  useEffect(() => {
+    setRandom(Math.floor(Math.random() * 20))
+  }, [])
+  
+  
+
   return (
     <Router>
       <Routes>
@@ -55,7 +62,7 @@ function App() {
               element={
                 <>
                   <Header />
-                  <Home />
+                  <Home random={random}/>
                 </>
               }
             />

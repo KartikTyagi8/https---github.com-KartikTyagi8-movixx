@@ -7,6 +7,8 @@ import {BsFillPlayFill} from 'react-icons/bs'
 import {AiOutlinePlus} from 'react-icons/ai'
 import Row from "../row/Row";
 import CarouselBanner from "../carouselBanner/CarouselBanner";
+import { toast } from "react-hot-toast";
+import { SERVER } from "../..";
 
 const API_KEY = "7a5563d316ae420e2224814b807a96d5";
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -16,14 +18,14 @@ const POPULAR = "popular";
 const NOW_PLAYING = "now_playing";
 const IMAGE_BACK_DROP_BASE_URL = "https://image.tmdb.org/t/p/w1280";
 
-const Home = () => {
+const Home = ({random}) => {
   const [upcomingMovies,setUpcomingMovies] = useState([]);
   const [topratedMovies,setTopratedMovies] = useState([]);
   const [popularMovies,setPopularMovies] = useState([]);
   const [nowplayingMovies,setNowplayingMovies] = useState([]);
   const [videoBannerSetup,setVideoBannerSetup] = useState(false);
   const [videos,setVideos] = useState([]);
-  const [random,setRandom] = useState(0);
+  
   const [showMore, setShowMore] = useState(false);
   
   
@@ -62,7 +64,7 @@ const Home = () => {
       `${BASE_URL}/movie/${upcomingMovies[random]?.id}/videos?api_key=${API_KEY}`
     );
     setVideos(results)
-    setRandom(Math.floor(Math.random() * 20))
+    
     } catch (error) {
       console.log(error)
     }
@@ -80,6 +82,7 @@ const Home = () => {
   }
 
   const filtereddVideos = videos.filter((item) => item.type === "Trailer");
+
   
     return (
     <section className="home" >
@@ -124,7 +127,7 @@ const Home = () => {
         
         <div className="btn-both">
           {upcomingMovies[0] && <button className="btn-watch-trailer" onClick={()=>setVideoBannerSetup(true)}><BsFillPlayFill/></button>}
-        {upcomingMovies[0] && <button className="btn-add-watchlist"><AiOutlinePlus/></button>}
+          <div className="watch-trailer">Watch Trailer</div> 
         </div>
       </div>
       </div>

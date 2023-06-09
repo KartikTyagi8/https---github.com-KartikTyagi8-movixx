@@ -154,7 +154,8 @@
           margin-top:40px;
           margin-left: 10px;
           left: 0;
-          width: 150px;
+          width: 210px;
+          align-items: center;
           justify-content: space-between;
           
           >.btn-watch-trailer{
@@ -174,20 +175,8 @@
             font-size: 40px;
           }
       }
-      >.btn-add-watchlist{
-          background-color: white;
-          display: flex;
-          align-items: center;
-          border: none;
-          justify-content: center;
-          height: 60px;
-          width: 60px;
-          cursor: pointer;
-          border-radius: 50%;
-          > svg{
-            fill: black;
-            font-size: 40px;
-          }
+      >.watch-trailer{
+        font-size: 1.5rem;
       }
       }
       

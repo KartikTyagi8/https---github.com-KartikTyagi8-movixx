@@ -178,7 +178,10 @@
   margin-top: 40px;
   margin-left: 10px;
   left: 0;
-  width: 150px;
+  width: 210px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -208,27 +211,8 @@
   font-size: 40px;
 }
 
-.home > .video-setup > .img-carousel-setup > .overlay > .banner-details > .btn-both > .btn-add-watchlist {
-  background-color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border: none;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 60px;
-  width: 60px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.home > .video-setup > .img-carousel-setup > .overlay > .banner-details > .btn-both > .btn-add-watchlist > svg {
-  fill: black;
-  font-size: 40px;
+.home > .video-setup > .img-carousel-setup > .overlay > .banner-details > .btn-both > .watch-trailer {
+  font-size: 1.5rem;
 }
 
 .card {
