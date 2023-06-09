@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.header {
+  background-color: black;
+  height: 75px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.header > img {
+  width: 60px;
+  height: auto;
+  cursor: pointer;
+}
+
+.header .center-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header .center-header > .options {
+  margin-left: 1vmax;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 4vmax;
+}
+
+.header .center-header > .options > a {
+  margin: 1vmax;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .center-header > .options > a > svg {
+  margin-left: 0.3vmax;
+}
+
+.header .center-header > .options > .categories {
+  margin: 1vmax;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .center-header > .options > .watchlist {
+  margin: 1vmax;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .center-header > .search-results-out {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 30%;
+  position: relative;
+}
+
+.header .center-header > .search-results-out > input {
+  margin-right: 1vmax;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid white;
+  height: 40px;
+  color: white;
+  background-color: black;
+  font-size: 1.2rem;
+  position: relative;
+}
+
+.header .center-header > .search-results-out > input::-webkit-input-placeholder {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.header .center-header > .search-results-out > input:-ms-input-placeholder {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.header .center-header > .search-results-out > input::-ms-input-placeholder {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.header .center-header > .search-results-out > input::placeholder {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.header .center-header > .search-results {
+  position: absolute;
+  padding: 4px;
+  z-index: 20;
+  top: 70px;
+  right: 20px;
+  width: 700px;
+  max-height: 405px;
+  overflow-y: auto;
+}
+
+.header .center-header > .search-results::-webkit-scrollbar {
+  display: none;
+}
+
+.header > svg {
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.header > svg:hover {
+  color: grey;
+}
+
+.header > .logout {
+  margin: auto 15px;
+  padding: 5px;
+  background-color: red;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/*# sourceMappingURL=App.css.map */

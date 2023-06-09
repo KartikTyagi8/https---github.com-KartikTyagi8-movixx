@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Cast from "../../Components/cast/Cast.jsx";
 // import { AiOutlinePlayCircle } from "react-icons/ai";
-import {BsFillPlayFill,BsCheck2} from 'react-icons/bs'
+import { BsFillPlayFill, BsCheck2 } from "react-icons/bs";
 // import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from "react-responsive-carousel";
-import {AiOutlinePlus} from 'react-icons/ai'
+import { AiOutlinePlus } from "react-icons/ai";
 
 import "./Details.scss";
 import axios from "axios";
@@ -14,17 +14,15 @@ import CarouselVideo from "../../Components/carousel/CarouselVideo.jsx";
 import RatingCircle from "../../Components/ratingCircle/RatingCircle.jsx";
 import { SERVER } from "../../index.js";
 import { toast } from "react-hot-toast";
+import Watchlist from "../watchlist/Watchlist.jsx";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 const API_KEY = "7a5563d316ae420e2224814b807a96d5";
 const BASE_URL = "https://api.themoviedb.org/3";
 const Details = ({ type }) => {
-  
-
   //Params
   const { id } = useParams();
 
-
-  const [videoSetup,setVideoSetup] = useState(false);
+  const [videoSetup, setVideoSetup] = useState(false);
 
   // Recommended
   const [recommend, setRecommend] = useState([]);
@@ -75,65 +73,99 @@ const Details = ({ type }) => {
   //Getting videos
   const [videos, setVideos] = useState([]);
   useEffect(() => {
-    
     const getVideos = async () => {
       try {
         const {
-        data: { results },
-      } = await axios.get(
-        `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}`
-      );
-      setVideos(results);
+          data: { results },
+        } = await axios.get(
+          `${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}`
+        );
+        setVideos(results);
       } catch (error) {
         console.log(error);
       }
-      
     };
     getVideos();
   }, []);
 
+    //##############################################################################
+
+    const [inWatchlist, setInWatchlist] = useState(false);
+    const [movieClicked, setMovieClicked] = useState(false);
+
+    useEffect(() => {
+      getMovieWatchlist();
+    }, [movieClicked]);
+    
+
+    const getMovieWatchlist = async () => {
+      try {
+        const {data} = await axios.get(`${SERVER}/watchlist/check/${id}`,{
+        withCredentials:true,
+      });
+      if(data.success){
+        setInWatchlist(true);
+      }
+      else{
+        setInWatchlist(false);
+      }
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
   
 
-
-  const [movieClicked,setMovieClicked] = useState(false);
-
-  const watchlistHandler = async () =>{
+  const watchlistHandler = async () => {
     try {
-      const {data} = await axios.post(`${SERVER}/watchlist/new`,{
-          type:type, item_id:id,poster_path:details.poster_path,
-      },{
-          headers:{
-              "Content-Type": "application/json",
+      const { data } = await axios.post(
+        `${SERVER}/watchlist/new`,
+        {
+          type: type,
+          item_id: id,
+          poster_path: details.poster_path,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
           },
-          withCredentials:true,
-      }
+          withCredentials: true,
+        }
       );
       setMovieClicked(true);
+      setInWatchlist(movieClicked);
       toast.success(data.message);
-  } catch (error) {
+    } catch (error) {
       toast.error(error.response.data.message);
       console.log(error);
-  }
+    }
+  };
+  const removeItem = async () => {
+    try {
+      const { data } = await axios.delete(
+        `${SERVER}/watchlist/${id}`,
+        {
+          withCredentials:true,
+        }
+      );
+      setMovieClicked(false);
+      setInWatchlist(movieClicked);
+      toast.success(data.message);
+    } catch (error) {
+      toast.error(error.response.data.message);
+      console.log(error);
+    }
   };
   
-
+  //##############################################################################
 
   const filtereddVideos = videos.filter((item) => item.type === "Trailer");
 
   const [showMore, setShowMore] = useState(false);
   const text = details?.overview;
-  const vote = details && details.vote_average ? details.vote_average.toFixed(1) : null;
+  const vote =
+    details && details.vote_average ? details.vote_average.toFixed(1) : null;
 
-  // if(movieClicked){
-  //   const item = await axios.post(`${SERVER}/watchlist/new`,{
-  //     type:type,
-  //     item_id: id,
-  //   })
-  // }
-  // else{
-  //   const item
-  // }
-  // const size = videos.size;
   const closeCarousel = () => {
     setVideoSetup(false);
   };
@@ -141,7 +173,12 @@ const Details = ({ type }) => {
   return (
     <section className="home">
       <div className="upper-part">
-        {videoSetup && <CarouselVideo videos={filtereddVideos} closeCarousel={closeCarousel}/>}
+        {videoSetup && (
+          <CarouselVideo
+            videos={filtereddVideos}
+            closeCarousel={closeCarousel}
+          />
+        )}
         <div
           className="poster"
           style={{
@@ -163,23 +200,21 @@ const Details = ({ type }) => {
             <RatingCircle rating={vote} />
             <div className="rating-overall">
               {type === "movie" && (
-              <div className="movie-trailer-watch">
-                <BsFillPlayFill
-                  onClick={() => {
-                    setVideoSetup(true);
-                  }}
-                />
+                <div className="movie-trailer-watch">
+                  <BsFillPlayFill
+                    onClick={() => {
+                      setVideoSetup(true);
+                    }}
+                  />
+                </div>
+              )}
+              <div
+                className="btn-add-watchlist"
                 
+              >
+                {inWatchlist ? <BsCheck2 onClick={removeItem}/> : <AiOutlinePlus onClick={watchlistHandler}/>}
               </div>
-
-            )}
-            <div className="btn-add-watchlist">
-                <AiOutlinePlus onClick={watchlistHandler}/>
-                {/* <BsCheck2 onClick={watchlistHandler}/> */}
             </div>
-            </div>
-            
-
           </div>
           <h2>Overview</h2>
           <p className="overview">
@@ -226,7 +261,6 @@ const Details = ({ type }) => {
               </p>
             )}
           </div>
-          
         </div>
       </div>
       <Cast cast={castName} type={type} />

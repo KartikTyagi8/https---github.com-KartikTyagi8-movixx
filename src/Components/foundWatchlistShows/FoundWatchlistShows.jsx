@@ -1,6 +1,6 @@
 import React from 'react';
 import Cards from '../cards/Cards.jsx';
-// import './FoundShows.scss'
+import './FoundWatchlistShows.scss'
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 

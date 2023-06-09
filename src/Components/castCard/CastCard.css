@@ -1,0 +1,39 @@
+.cast-card-out {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 1.5rem;
+}
+
+.cast-card-out > h2 {
+  color: white;
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+.cast-card-out > p {
+  margin: 2px 0px;
+}
+
+.cast-card-out > span {
+  color: white;
+  font-size: 0.7rem;
+  margin-bottom: 10px;
+}
+
+.cast-card-out > .cast-card {
+  width: 150px;
+  height: 175px;
+  border-radius: 50%;
+}
+/*# sourceMappingURL=CastCard.css.map */

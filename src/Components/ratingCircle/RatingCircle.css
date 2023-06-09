@@ -1,0 +1,18 @@
+.circleRating {
+  background-color: black;
+  border-radius: 50%;
+  width: 50px;
+  /* Set the width and height to adjust the size of the circle */
+  height: 50px;
+}
+
+.circleRating .CircularProgressbar-text {
+  font-size: 30px;
+  font-weight: 700;
+  fill: white;
+}
+
+.circleRating .CircularProgressbar-trail {
+  stroke: transparent;
+}
+/*# sourceMappingURL=RatingCircle.css.map */

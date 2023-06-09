@@ -1,0 +1,16 @@
+.container{
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    >h2{
+        font-size: 60px;
+        margin-bottom: 10px;
+        // text-align: center;
+        font-weight: 1000;
+    }
+    > .all_tiles{
+        margin: 0 auto;
+        // align-items: center;
+    }
+}

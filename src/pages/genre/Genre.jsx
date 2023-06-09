@@ -3,10 +3,8 @@ import React, { useEffect, useState } from "react";
 import "./Genre.scss";
 import { useParams } from "react-router-dom";
 import FoundShows from "../../Components/foundComponents/FoundShows";
-import Cards from "../../Components/cards/Cards";
 
 const API_KEY = "7a5563d316ae420e2224814b807a96d5";
-const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 const BASE_URL = "https://api.themoviedb.org/3";
 
 const Genre = ({ title }) => {

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,OAAO,EAAE,IAAI;EACb,gBAAgB,EAAE,KAAK;CAYzB;;AAdF,AAII,UAJM,GAIL,EAAE,CAAC;EACA,SAAS,EAAC,IAAI;CACjB;;AANL,AAOI,UAPM,GAOL,GAAG,CAAA;EACA,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,MAAM;CAIrB;;AAbL,AAUQ,UAVE,GAOL,GAAG,AAGC,mBAAmB,CAAC;EACjB,OAAO,EAAE,IAAI;CACd",
+    "sources": [
+        "RelatedSection.scss"
+    ],
+    "names": [],
+    "file": "RelatedSection.css"
+}

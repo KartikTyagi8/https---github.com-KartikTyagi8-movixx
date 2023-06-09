@@ -1,0 +1,20 @@
+.all_tiles {
+  padding: 1rem;
+  background-color: black;
+}
+
+.all_tiles > h2 {
+  font-size: 40px;
+}
+
+.all_tiles > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.all_tiles > div::-webkit-scrollbar {
+  display: none;
+}
+/*# sourceMappingURL=RelatedSection.css.map */

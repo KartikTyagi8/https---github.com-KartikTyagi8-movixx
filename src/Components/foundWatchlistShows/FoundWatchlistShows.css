@@ -1,0 +1,22 @@
+.container {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.container > h2 {
+  font-size: 60px;
+  margin-bottom: 10px;
+  font-weight: 1000;
+}
+
+.container > .all_tiles {
+  margin: 0 auto;
+}
+/*# sourceMappingURL=FoundWatchlistShows.css.map */

@@ -1,0 +1,21 @@
+.cast {
+  padding: 1rem;
+  background-color: black;
+}
+
+.cast > h2 {
+  margin-left: 30px;
+  font-size: 40px;
+}
+
+.cast > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.cast > div::-webkit-scrollbar {
+  display: none;
+}
+/*# sourceMappingURL=Cast.css.map */

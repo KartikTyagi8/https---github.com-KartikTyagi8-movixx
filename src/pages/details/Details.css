@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Geologica:wght@300&display=swap");
+.home {
+  padding: 5px;
+}
+
+.home > .upper-part {
+  position: relative;
+  margin: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.home > .upper-part > .poster {
+  padding: 10px;
+  height: 700px;
+  width: 50%;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.home > .upper-part > .basic-info {
+  width: 100%;
+  padding: 10px;
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.home > .upper-part > .basic-info > h1 {
+  font-size: 2.5rem;
+  font-family: "Roboto";
+}
+
+.home > .upper-part > .basic-info > .genre {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0px;
+}
+
+.home > .upper-part > .basic-info > .genre > .genre-name {
+  background-color: red;
+  margin: 0 5px;
+  border: none;
+  color: white;
+  padding: 2px;
+  border-radius: 7px;
+  font-family: "Geologica";
+}
+
+.home > .upper-part > .basic-info > .tagline {
+  font-size: 1.2rem;
+  font-style: italic;
+  width: 80%;
+  color: grey;
+}
+
+.home > .upper-part > .basic-info h2 {
+  font-size: 2rem;
+}
+
+.home > .upper-part > .basic-info > .overview {
+  font-size: 1.2rem;
+  width: 80%;
+}
+
+.home > .upper-part > .basic-info > .overview > span {
+  color: rgba(207, 17, 17, 0.86);
+}
+
+.home > .upper-part > .basic-info > .rating {
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.home > .upper-part > .basic-info > .rating > .rating-overall {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 140px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.home > .upper-part > .basic-info > .rating > .rating-overall > .movie-trailer-watch {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.home > .upper-part > .basic-info > .rating > .rating-overall > .movie-trailer-watch > svg {
+  fill: rgba(212, 13, 13, 0.866);
+  font-size: 40px;
+}
+
+.home > .upper-part > .basic-info > .rating > .rating-overall > .btn-add-watchlist {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.home > .upper-part > .basic-info > .rating > .rating-overall > .btn-add-watchlist > svg {
+  fill: black;
+  font-size: 40px;
+}
+
+.home > .upper-part > .basic-info > .run-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0px;
+}
+
+.home > .upper-part > .basic-info > .run-time > .class-p {
+  margin: 0px 5px;
+}
+/*# sourceMappingURL=Details.css.map */
