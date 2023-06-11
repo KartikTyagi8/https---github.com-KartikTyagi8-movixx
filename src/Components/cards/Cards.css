@@ -15,4 +15,23 @@
   -webkit-transform: translateY(-10px) scale(1.08);
           transform: translateY(-10px) scale(1.08);
 }
+
+@media (max-width: 768px) {
+  .card {
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+    width: 130px;
+    cursor: pointer;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+    margin: 0.2rem;
+  }
+  .card:hover {
+    -webkit-transform: translateY(-10px) scale(1.08);
+            transform: translateY(-10px) scale(1.08);
+  }
+}
 /*# sourceMappingURL=Cards.css.map */

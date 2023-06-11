@@ -63,7 +63,7 @@
 
 .login > .full-section > .form-login {
   padding: 10px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
   height: 400px;
   width: 500px;
@@ -87,6 +87,7 @@
 }
 
 .login > .full-section > .form-login > input {
+  outline: none;
   width: 80%;
   height: 3rem;
   color: black;
@@ -101,5 +102,114 @@
   height: 3rem;
   width: 80%;
   font-size: 1.5rem;
+  border: none;
+}
+
+.demo-cred {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .login > .header {
+    z-index: 15;
+    width: 100%;
+    background: transparent;
+    height: 5rem;
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .login > .header > .logo-img {
+    width: 3rem;
+    height: 3rem;
+  }
+  .login > .header > .logo-img > img {
+    width: 100%;
+    height: 100%;
+  }
+  .login > .header > .sign-up {
+    padding: 5px 10px;
+    background-color: red;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  .login > .full-section {
+    background-color: black;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 1rem;
+  }
+  .login > .full-section > img {
+    max-width: 100%;
+    height: 100%;
+  }
+  .login > .full-section .form-login {
+    padding: 4px;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    height: 300px;
+    width: 320px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .login > .full-section .form-login > input {
+    outline: none;
+    width: 95%;
+    height: 2rem;
+    color: black;
+    font-size: 1.5rem;
+    padding: 3px;
+    margin: 4px 0;
+  }
+  .login > .full-section .form-login > button {
+    padding: 5px;
+    background-color: red;
+    width: 95%;
+    height: 2rem;
+    font-size: 1.5rem;
+    border: none;
+  }
 }
 /*# sourceMappingURL=Login.css.map */

@@ -14,3 +14,22 @@
           }
     }
  }
+
+ @media (max-width: 768px){
+    .row{
+        padding: 1rem;
+        background-color: black;
+        > h2{
+            font-size: 2rem;
+            color: rgba(211, 19, 19, 0.65);
+            font-family: "Geologica";
+        }
+        >div{
+            display: flex;
+            overflow-x: scroll;
+            &::-webkit-scrollbar {
+                display: none;
+              }
+        }
+     }
+ }

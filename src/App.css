@@ -180,4 +180,165 @@ a {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.header > .initials {
+  padding: 10px;
+  font-size: 1.7rem;
+  background-color: rgba(153, 153, 195, 0.569);
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .header {
+    background-color: black;
+    height: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 1rem;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .header > img {
+    width: 2rem;
+    height: auto;
+    cursor: pointer;
+  }
+  .header .center-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .header .center-header > .options {
+    margin-left: 1vmax;
+    display: none;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-left: 4vmax;
+  }
+  .header .center-header > .options > a {
+    margin: 1vmax;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .header .center-header > .options > a > svg {
+    margin-left: 0.3vmax;
+  }
+  .header .center-header > .options > .categories {
+    margin: 1vmax;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .header .center-header > .options > .watchlist {
+    margin: 1vmax;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .header .center-header > .search-results-out {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 2rem;
+    position: absolute;
+  }
+  .header .center-header > .search-results-out > input {
+    width: 50%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+    height: 20px;
+    color: white;
+    background-color: black;
+    font-size: 0.7rem;
+    position: relative;
+  }
+  .header .center-header > .search-results-out > input::-webkit-input-placeholder {
+    color: white;
+    font-size: 0.7rem;
+  }
+  .header .center-header > .search-results-out > input:-ms-input-placeholder {
+    color: white;
+    font-size: 0.7rem;
+  }
+  .header .center-header > .search-results-out > input::-ms-input-placeholder {
+    color: white;
+    font-size: 0.7rem;
+  }
+  .header .center-header > .search-results-out > input::placeholder {
+    color: white;
+    font-size: 0.7rem;
+  }
+  .header .center-header > .search-results {
+    position: absolute;
+    padding: 1px;
+    z-index: 20;
+    top: 50px;
+    right: 10px;
+    width: 300px;
+    max-height: 275px;
+    overflow-y: auto;
+  }
+  .header .center-header > .search-results::-webkit-scrollbar {
+    display: none;
+  }
+  .header > svg {
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .header > svg:hover {
+    color: grey;
+  }
+  .header > .logout {
+    padding: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .header > .initials {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: rgba(153, 153, 195, 0.569);
+    border-radius: 50%;
+  }
+}
 /*# sourceMappingURL=App.css.map */

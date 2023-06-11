@@ -17,22 +17,22 @@ const BASE_URL = "https://api.themoviedb.org/3";
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isWatchlistDropdownOpen, setIsWatchlistDropdownOpen] = useState(false);
-  const {isAuthenticated,setIsAuthenticated} = useContext(Context);
+  const { isAuthenticated, setIsAuthenticated, user, setUser } = useContext(Context);
 
   const logoutHandler = async () => {
     try {
-      await axios.get(`${SERVER}/users/logout`,{
-        withCredentials:true,
+      await axios.get(`${SERVER}/users/logout`, {
+        withCredentials: true,
       });
-    toast.success("Logout Successfully");
-    setIsAuthenticated(false);
-    localStorage.removeItem("authToken");
+      toast.success("Logout Successfully");
+      setIsAuthenticated(false);
+      localStorage.removeItem("authToken");
 
-    navigate("/");
-      } catch (error) {
-        toast.error(error.response.data.message);
-      }
-  }
+      navigate("/");
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
   // const textColor = isDropdownOpen ? 'grey' : 'black';
 
   const handleDropdownToggle = () => {
@@ -71,6 +71,30 @@ const Header = () => {
     searchMovies();
   }, [searchQuery]);
 
+  useEffect(() => {
+    axios
+      .get(`${SERVER}/users/me`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setUser(res.data.user);
+      })
+      .catch((error) => {
+        setUser({});
+      });
+  }, []);
+  let name = user && user.name ? user.name : '';
+name = name
+  .split(' ')
+  .map(part => part.charAt(0))
+  .join('')
+  .toUpperCase();
+
+if (name.length > 2) {
+  name = name.slice(0, 2); // Take the first two characters as initials
+}
+
+console.log(name)
 
   return (
     <nav className="header">
@@ -117,7 +141,10 @@ const Header = () => {
       </div>
 
       <ImSearch onClick={handleSearchClick} />
-      <button className="logout" onClick={logoutHandler}>Logout</button>
+      <button className="logout" onClick={logoutHandler}>
+        Logout
+      </button>
+      <div className="initials">{name}</div>
     </nav>
   );
 };

@@ -74,6 +74,13 @@ const Login = () => {
           <button type="submit">Login</button>
           <h4>or</h4>
           <Link to="/register">Sign Up</Link>
+          <div className="demo-cred">
+            <p>Demo Credentials:</p>
+          <p>Username: demo@gmail.com</p>
+          <p>Password: demo</p>
+          </div>
+          
+
         </form>
       </section>
     </div>

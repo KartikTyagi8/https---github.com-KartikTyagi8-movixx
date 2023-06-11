@@ -9,4 +9,16 @@
         transform: translateY(-10px) scale(1.08);
     }
  }
+ @media (max-width: 768px){
+    .card{
+        align-items: baseline;
+        width: 130px;
+        cursor: pointer;
+        transition: transform 0.5s;
+        margin: 0.2rem;
+        &:hover{
+            transform: translateY(-10px) scale(1.08);
+        }
+     }
+ }
 

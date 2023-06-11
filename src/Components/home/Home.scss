@@ -1,38 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geologica:wght@300&display=swap");
 
-.home{
+.home {
   display: flex;
   flex-direction: column;
-  >.video-setup{
-  position: relative;
-  width: 100%;
-  height: 600px;
-  z-index:12;
-  >.carousel {
-    position: absolute;
-    top: 0;
-    left: 0;
+  > .video-setup {
+    position: relative;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    >.close-icon {
+    height: 600px;
+    z-index: 12;
+    > .carousel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.8)
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      > .close-icon {
         position: absolute;
         top: 10px; /* Adjust the top position */
-        right: 10px; 
+        right: 10px;
         fill: red;
         font-size: 4rem;
         color: #fff;
         cursor: pointer;
         z-index: 12;
-        >svg{
+        > svg {
           fill: red;
         }
       }
-      >.carousel-content {
+      > .carousel-content {
         position: relative;
         min-width: 100%;
         height: 100%;
@@ -42,7 +46,198 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        >.carousel-item {
+        > .carousel-item {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          z-index: 9999;
+          transition: opacity 0.3s ease-in-out;
+        }
+        > .carousel-item.active {
+          opacity: 1;
+        }
+
+        > .carousel-control {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #fff;
+          font-size: 2rem;
+          cursor: pointer;
+          z-index: 10;
+        }
+        > .carousel-control.prev {
+          left: 10px;
+        }
+
+        > .carousel-control.next {
+          right: 10px;
+        }
+      }
+    }
+
+    > .img-carousel-setup {
+      position: relative;
+      height: 100%;
+      > .banner {
+        padding: 10px;
+
+        height: 100%;
+        width: 80%;
+
+        background-color: black;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      > .overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 600px;
+        background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.1) 1%,
+            rgba(0, 0, 0, 0.2) 3%,
+            rgba(0, 0, 0, 0.3) 5%,
+            rgba(0, 0, 0, 0.8) 30%,
+            rgba(0, 0, 0, 1.1) 40%,
+            rgba(0, 0, 0, 0.9) 100%
+          ),
+          radial-gradient(
+            circle at top left,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.9) 100%
+          );
+        background-blend-mode: normal, screen;
+        border: none;
+        > .banner-details {
+          margin: 0 40px;
+          width: 70%;
+          z-index: 10;
+          position: absolute;
+          left: 100px;
+          top: 0;
+          bottom: 20px;
+          right: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          color: #ffffff;
+          z-index: 2;
+          > .banner-title {
+            font-weight: 1000;
+            font-size: 50px;
+            margin-bottom: 10px;
+            width: 100%;
+            font-family: "Geologica";
+          }
+
+          > .overview {
+            font-size: 20px;
+            width: 100%;
+            > span {
+              color: rgba(207, 17, 17, 0.86);
+            }
+          }
+          > .btn-both {
+            display: flex;
+            margin-top: 40px;
+            margin-left: 10px;
+            left: 0;
+            width: 210px;
+            align-items: center;
+            justify-content: space-between;
+
+            > .btn-watch-trailer {
+              background-color: rgba(212, 13, 13, 0.866);
+              font-size: 30px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: none;
+              height: 60px;
+              width: 60px;
+              cursor: pointer;
+              border-radius: 50%;
+
+              > svg {
+                fill: black;
+                font-size: 40px;
+              }
+            }
+            > .watch-trailer {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.card {
+  width: 200px;
+  cursor: pointer;
+  transition: transform 0.5s;
+  margin: 0.3rem;
+  &:hover {
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    display: flex;
+    flex-direction: column;
+    > .video-setup {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      z-index: 12;
+      > .carousel {
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.8)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        > .close-icon {
+          position: absolute;
+          top: -10px; /* Adjust the top position */
+          right: -10px;
+          fill: red;
+          font-size: 2rem;
+          color: #fff;
+          cursor: pointer;
+          z-index: 12;
+          > svg {
+            fill: red;
+          }
+        }
+        > .carousel-content {
+          position: relative;
+          min-width: 100%;
+          height: 100%;
+          z-index: 11;
+          // width: auto;
+          // height: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          > .carousel-item {
             position: absolute;
             top: 0;
             left: 0;
@@ -51,14 +246,12 @@
             opacity: 0;
             z-index: 9999;
             transition: opacity 0.3s ease-in-out;
-           
           }
-          >.carousel-item.active {
+          > .carousel-item.active {
             opacity: 1;
           }
-          
-          
-          >.carousel-control {
+
+          > .carousel-control {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -66,139 +259,127 @@
             font-size: 2rem;
             cursor: pointer;
             z-index: 10;
-            
           }
-          >.carousel-control.prev {
+          > .carousel-control.prev {
             left: 10px;
           }
-          
-          >.carousel-control.next {
+
+          > .carousel-control.next {
             right: 10px;
           }
-          
-         
+        }
       }
-  }
-  
-  
-  
-  
-  
-  
-  
-  >.img-carousel-setup{
-    position: relative;
-    height: 100%;
-    >.banner{
-      padding: 10px;
-      
-      height: 100%;
-      width: 80%;
-      
-      background-color: black;
-      background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-   }
-   >.overlay {
-    position: absolute;
-    top: 0;
-    right:0;
-    width: 50%;
-    height: 600px;
-    background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.1) 1%,
-      rgba(0, 0, 0, 0.2) 3%,
-      rgba(0, 0, 0, 0.3) 5%,
-      rgba(0, 0, 0, 0.8) 30%,
-      rgba(0, 0, 0, 1.1) 40%,
-      rgba(0, 0, 0, 0.9) 100%
-    ),
-              radial-gradient(circle at top left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
-  background-blend-mode: normal, screen;
-    border: none;
-    >.banner-details{
-      margin:0 40px;
-      width: 70%;
-      z-index: 10;
-      position: absolute;
-      left: 100px;
-      top: 0;
-      bottom: 20px;
-      right: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      color: #ffffff;
-      z-index: 2; 
-      >.banner-title{
-          font-weight: 1000;
-          font-size: 50px;
-          margin-bottom: 10px;
-          width: 100%;
-          font-family: "Geologica";
-          }
-  
-          >.overview{
-            font-size: 20px;
-            width: 100%;
-            >span{
-              color:rgba(207, 17, 17, 0.86);
+
+      > .img-carousel-setup {
+        position: relative;
+        height: 100%;
+        > .banner {
+          padding: 5px;
+          height: 220px;
+          width: 80%;
+
+          background-color: black;
+          // background-repeat: no-repeat;
+          // background-size: cover;
+          // background-position: center;
+          position: relative;
+        }
+        > .overlay {
+          position: absolute;
+          top: 0px;
+          right: 4px;
+          width: 60%;
+          height: 220px;
+          background: linear-gradient(
+              to right,
+              rgba(0, 0, 0, 0.1) 1%,
+              rgba(0, 0, 0, 0.2) 3%,
+              rgba(0, 0, 0, 0.3) 5%,
+              rgba(0, 0, 0, 0.8) 30%,
+              rgba(0, 0, 0, 1.1) 40%,
+              rgba(0, 0, 0, 0.9) 100%
+            ),
+            radial-gradient(
+              circle at top left,
+              rgba(0, 0, 0, 0) 0%,
+              rgba(0, 0, 0, 0.9) 100%
+            );
+          background-blend-mode: normal, screen;
+          border: none;
+          > .banner-details {
+            margin: 0 10px;
+            width: 90%;
+            z-index: 10;
+            position: absolute;
+            left: 20px;
+            top: 50px;
+            bottom: 20px;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #ffffff;
+            z-index: 2;
+            > .banner-title {
+              font-weight: 1000;
+              font-size: 20px;
+              margin-bottom: 10px;
+              width: 100%;
+              font-family: "Geologica";
+            }
+
+            > .overview {
+              font-size: 10px;
+              width: 100%;
+              > span {
+                color: rgba(207, 17, 17, 0.86);
+              }
+            }
+            > .btn-both {
+              display: flex;
+              margin-top: 10px;
+              // margin-left: 10px;
+              left: 0;
+              width: 210px;
+              align-items: center;
+              justify-content: space-between;
+
+              > .btn-watch-trailer {
+                background-color: rgba(212, 13, 13, 0.866);
+                font-size: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                height: 30px;
+                width: 30px;
+                cursor: pointer;
+                border-radius: 50%;
+
+                > svg {
+                  fill: black;
+                  font-size: 40px;
+                }
+              }
+              > .watch-trailer {
+                font-size: 10px;
+                left: 0;
+                right: 100%;
+              }
             }
           }
-      >.btn-both{
-  
-          display: flex;
-          margin-top:40px;
-          margin-left: 10px;
-          left: 0;
-          width: 210px;
-          align-items: center;
-          justify-content: space-between;
-          
-          >.btn-watch-trailer{
-          background-color: rgba(212, 13, 13, 0.866);
-          font-size: 30px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: none;
-          height: 60px;
-          width: 60px;
-          cursor: pointer;
-          border-radius: 50%;
-          
-          > svg{
-            fill: black;
-            font-size: 40px;
-          }
+        }
       }
-      >.watch-trailer{
-        font-size: 1.5rem;
-      }
-      }
-      
     }
   }
-  }
-  
-  
-  
-}
 
-}
- 
-.card{
-  width: 200px;
-  cursor: pointer;
-  transition: transform 0.5s;
-  margin: 0.3rem;
-  &:hover{
+  .card {
+    width: 200px;
+    cursor: pointer;
+    transition: transform 0.5s;
+    margin: 0.3rem;
+    &:hover {
       transform: translateY(-10px) scale(1.05);
+    }
   }
 }
- 
-
-

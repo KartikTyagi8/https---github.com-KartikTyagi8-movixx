@@ -9,6 +9,7 @@ import Row from "../row/Row";
 import CarouselBanner from "../carouselBanner/CarouselBanner";
 import { toast } from "react-hot-toast";
 import { SERVER } from "../..";
+import { useLocation } from "react-router-dom";
 
 const API_KEY = "7a5563d316ae420e2224814b807a96d5";
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -25,8 +26,32 @@ const Home = ({random}) => {
   const [nowplayingMovies,setNowplayingMovies] = useState([]);
   const [videoBannerSetup,setVideoBannerSetup] = useState(false);
   const [videos,setVideos] = useState([]);
-  
   const [showMore, setShowMore] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    // Retrieve the last scroll position from localStorage
+    const lastScrollPos = localStorage.getItem("scrollPosition");
+
+    if (lastScrollPos) {
+      window.scrollTo(0, parseInt(lastScrollPos));
+      setScrollPosition(parseInt(lastScrollPos));
+    }
+
+    // Listen for scroll events and update the scroll position
+    const handleScroll = () => {
+      const currentPosition = window.pageYOffset;
+      localStorage.setItem("scrollPosition", currentPosition.toString());
+      setScrollPosition(currentPosition);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [location]);
   
   
 
